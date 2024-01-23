@@ -1,12 +1,12 @@
-# Documentation for `reverse.c`
+# Documentation for reverse.c
 
 ## Overview
 
-`reverse.c` is a C program that reads lines from an input file, stores them in a dynamic array, and then writes them to an output file in reverse order. If no output file is provided, it prints the lines to the standard output.
+`reverse.c` reads lines from an input file, stores them in a dynamic array, and then writes them to an output file in reverse order. If no output file is provided, it prints the lines to the standard output.
 
 ## Usage
 
-The program is run from the command line with the following syntax:
+Run the program in a linux terminal with the following syntax:
 
 ```
 reverse <input> <output>
@@ -19,7 +19,7 @@ Where:
 
 ## Error Handling
 
-The program includes robust error handling:
+The program includes the following error handling:
 
 - If the input file and output file are the same, it prints an error message "Input and output file must differ" and exits with return code 1.
 - If the user specifies an input file or output file that cannot be opened, it prints an error message "error: cannot open file 'filename'" and exits with return code 1.
