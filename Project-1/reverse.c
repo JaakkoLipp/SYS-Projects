@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  // Allocate memory for storing lines
+  // malloc for storing all lines
   char **lines = malloc(INITIAL_SIZE * sizeof(char *));
   int lineCount = 0;
   int lineSize = INITIAL_SIZE;
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  // Allocate memory for storing a line
+  // malloc for storing each line
   char *line = malloc(INITIAL_SIZE);
   int charCount = 0;
   int bufferSize = INITIAL_SIZE;
