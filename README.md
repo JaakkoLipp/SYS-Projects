@@ -25,4 +25,7 @@ Testing
 
 A test program testreadcount was created to perform several read() operations and then call getreadcount(), printing the result to verify the correct increment of the counter.
 
+The project can be compiled with make clean and then make / make qemu-nox (requires qemu)
+Tested to be functioning correctly in qemu/ubuntu host.
+
 Screenshots
