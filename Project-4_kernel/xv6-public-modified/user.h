@@ -24,7 +24,8 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 // getreadcount syscall user accessible
-extern int sys_getreadcount(void);
+int getreadcount(void);
+
 
 
 // ulib.c

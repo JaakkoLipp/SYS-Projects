@@ -165,6 +165,8 @@ mkfs: mkfs.c fs.h
 # http://www.gnu.org/software/make/manual/html_node/Chained-Rules.html
 .PRECIOUS: %.o
 
+# _testreadcount added to test new getreadcount syscall
+
 UPROGS=\
 	_cat\
 	_echo\
@@ -181,6 +183,15 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
+	_testreadcount\
+
+testreadcount.o: testreadcount.c
+		$(CC) $(CFLAGS) -c -o testreadcount.o testreadcount.c
+
+_testreadcount: testreadcount.o $(ULIB)
+		$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o _testreadcount testreadcount.o $(ULIB)
+		$(OBJDUMP) -S _testreadcount > testreadcount.asm
+
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
