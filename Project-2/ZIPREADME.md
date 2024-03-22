@@ -1,57 +1,69 @@
-# ZIP and UNZIP Utilities
+# my-zip and my-unzip
 
-This repository contains two utility programs for simple file compression and decompression using run-length encoding (RLE). RLE is a form of lossless data compression in which runs of data are stored as a single data value and count.
+## Overview
 
-## Programs
+`my-zip` and `my-unzip` are a pair of command-line tools designed for simple file compression and decompression, respectively. They utilize run-length encoding (RLE) for compression, a technique that replaces sequences of repeated characters with a single character and a count. This documentation provides an overview of their functionality, usage, and implementation details.
 
-- `my-zip`: Compresses one or more text files using RLE, producing a binary output of 4-byte integers followed by a single character, indicating the count and the character respectively.
-- `my-unzip`: Decompresses files that were compressed with `my-zip`, restoring them to their original state.
+## Run-Length Encoding (RLE)
 
-## Getting Started
+Run-length encoding is a form of lossless data compression where sequences of data are stored as a single data value and count. For example, the string `aaaaabbb` would be encoded as `5a3b` in a human-readable form. `my-zip` applies RLE to compress files, and `my-unzip` reverses the process to decompress them.
 
-### Prerequisites
+## File Format
 
-- A C compiler such as GCC
-- Make (optional for easier compilation)
+The compressed file format consists of a series of records, each of which includes a 4-byte integer indicating the number of times a character is repeated, followed by the single character itself. This binary format ensures compact storage, with each record taking exactly 5 bytes.
 
-### Compilation
-
-You can compile both programs with the following commands:
-
-```sh
-gcc -o my-zip my-zip.c
-gcc -o my-unzip my-unzip.c
-```
+## `my-zip`: Compression Tool
 
 ### Usage
 
-To compress files with `my-zip`, redirect the output to a file as follows:
-
-```sh
-./my-zip input1.txt [input2.txt ...] > output.z
+```bash
+./my-zip file1 [file2 ...] > output.z
 ```
 
-To decompress a file with `my-unzip`, you can use:
+`my-zip` reads one or more text files, compresses them using RLE, and outputs the result to standard output (stdout). Users typically redirect this output to a file using the `>` operator.
 
-```sh
-./my-unzip output.z
+### Functionality
+
+- **File Reading**: `my-zip` sequentially reads the content of the specified file(s).
+- **Compression**: It compresses the content by applying RLE.
+- **Output**: The compressed data is written to stdout in a binary format.
+
+### Implementation Details
+
+- `my-zip` processes files one at a time but treats multiple files as a continuous stream for compression.
+- Each character sequence is encoded as a 4-byte integer count followed by the character.
+- The output is binary, not human-readable ASCII text.
+
+## `my-unzip`: Decompression Tool
+
+### Usage
+
+```bash
+./my-unzip file.z
 ```
 
-## Implementation Details
+`my-unzip` reads a compressed file produced by `my-zip` and writes the decompressed text to standard output (stdout).
 
-- `my-zip` reads through the input file(s) and compresses them using run-length encoding. The output is a binary format where each 5-byte block contains a 4-byte integer (representing the count of repeated characters) followed by the single repeated character.
-- `my-unzip` reads the binary compressed file and decompresses it, effectively reversing the process performed by `my-zip`.
+### Functionality
 
-## Example
+- **File Reading**: `my-unzip` opens and reads the compressed binary file.
+- **Decompression**: It decodes the RLE-compressed data.
+- **Output**: The decompressed text is printed to stdout.
 
-Given a file `example.txt` containing:
+### Implementation
 
-```
-aaaaabbbcccdde
-```
+- `my-unzip` reads 5-byte records from the input file, extracting the 4-byte count and the 1-byte character.
+- It prints each character to stdout the number of times specified by the preceding count.
 
-Compressing it with `my-zip` and then decompressing with `my-unzip` will produce:
+## Error Handling
 
-```
-aaaaabbbcccdde
+Both tools exit with a return code of 1 and display a usage message if no files are specified. `my-zip` also checks for file read errors, while `my-unzip` checks for read errors during decompression.
+
+## Compilation
+
+The tools can be compiled with GCC:
+
+```bash
+gcc -o my-zip my-zip.c
+gcc -o my-unzip my-unzip.c
 ```
