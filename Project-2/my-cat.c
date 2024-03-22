@@ -3,12 +3,12 @@
 
 int main(int argc, char *argv[]) {
 
-  // No files specified, exit with status code 0
+  // No files specified
   if (argc == 1) {
     return 0;
   }
 
-  // Loop through each file
+  // Loop files
   for (int i = 1; i < argc; i++) {
     // Reading
     FILE *fp = fopen(argv[i], "r");
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
       printf("%s", buffer);
     }
 
-    // Close the file
+    // Close file
     fclose(fp);
   }
   

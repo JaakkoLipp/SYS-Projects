@@ -1,10 +1,23 @@
-Käyttöjärjestelmät ja systeemiohjelmointi
+### Käyttöjärjestelmät ja systeemiohjelmointi
 
-Project 1: Warmup to C and Unix programming
+### Project 1: Warmup to C and Unix programming
 
-Project 2: Unix Utilities Page
+(own documentation file in project folder)
 
-Project 4: Modified XV6 kernel with new syscall getreadcount:
+- reverse
+
+### Project 2: Unix Utilities Page
+
+(own documentation file in project folder)
+
+- my cat
+- my grep
+- my zip and unzip
+
+### Project 4: Modified XV6 kernel with new syscall getreadcount:
+
+the modified kernel can be tested in the kernel folder inside project 4.
+
 Returns how many times that the read() system call has been called by user processes since the time that the kernel was booted.
 
 Adding getreadcount System Call to xv6
@@ -28,4 +41,5 @@ A test program testreadcount was created to perform several read() operations an
 The project can be compiled with make clean and then make / make qemu-nox (requires qemu)
 Tested to be functioning correctly in qemu/ubuntu host.
 
-Screenshots
+Screenshot
+![testprogram of new syscall](Project4_Testreadcount.png)
