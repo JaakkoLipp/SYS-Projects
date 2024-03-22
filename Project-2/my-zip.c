@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// This function reads the input stream and compresses
 void zipStream(FILE *input) {
     char current, previous;
     int count = 0;
@@ -24,6 +25,7 @@ void zipStream(FILE *input) {
     }
 }
 
+// main, contains cli arguments and file handling
 int main(int argc, char **argv) {
     if (argc < 2) {
         printf("Usage: my-zip <file1> [file2 ...]\n");

@@ -43,3 +43,9 @@ Tested to be functioning correctly in qemu/ubuntu host.
 
 Screenshot
 ![testprogram of new syscall](Project4_Testreadcount.png)
+
+#### disclaimers and sources
+
+All programs have been tested to compile and work with -Wall -Werror in gcc.
+Generative AI was used to generate and improve parts of the documentation, and to refine and improve code readability and structure.
+AI was used as a teaching tool and some information is based on AI generated content.

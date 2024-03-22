@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+// takes file, prints uncompressed information
 void unzipStream(FILE *input) {
     int count;
     char character;

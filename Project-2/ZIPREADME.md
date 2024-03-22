@@ -1,4 +1,4 @@
-# Run-Length Encoding Utilities
+# ZIP and UNZIP Utilities
 
 This repository contains two utility programs for simple file compression and decompression using run-length encoding (RLE). RLE is a form of lossless data compression in which runs of data are stored as a single data value and count.
 
@@ -21,12 +21,6 @@ You can compile both programs with the following commands:
 ```sh
 gcc -o my-zip my-zip.c
 gcc -o my-unzip my-unzip.c
-```
-
-Alternatively, if you have a `Makefile`, you could simply run:
-
-```sh
-make
 ```
 
 ### Usage
