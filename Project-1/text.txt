@@ -1,4 +1,5 @@
 hello
 this
-is 
-a file
+is
+a
+file
