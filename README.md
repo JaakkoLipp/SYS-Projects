@@ -293,7 +293,7 @@ The purpose of adding the `getreadcount` system call is to monitor the usage of 
 
 ## Screenshot
 
-![test program of new syscall](Project4_Testreadcount.png)
+Project4_Testreadcount.png
 
 This screenshot showcases the output of the `testreadcount` program, demonstrating the functionality of the new `getreadcount` syscall.
 
