@@ -4,7 +4,7 @@ Sourcecode available at: [https://github.com/JaakkoLipp/SYS-Projects](https://gi
 
 screenshots of programs functionality in screenshots/ folder
 
-- Ideally the documentation would be in seperate files, but "Projektit 1-5 samaan pdf-tiedostoon"
+Ideally the documentation would be in seperate files
 
 # Project 1: Warmup to C and Unix programming
 
@@ -49,6 +49,10 @@ Finally, it frees the memory allocated for the array and closes the output file 
 The program uses dynamic memory allocation to store the lines from the input file. It starts with an array of a certain size and doubles the size of the array whenever it becomes full. It also uses dynamic memory allocation to store each line of text, resizing the buffer as needed to accommodate long lines.
 
 When the program has finished writing the lines to the output file, it frees the memory allocated for each line and for the array itself. This ensures that the program does not leak memory, even if the input file is very large.
+
+## Screenshot
+
+![reverse test picture](/screenshots/project1.png)
 
 ---
 
@@ -116,10 +120,9 @@ To concatenate and display the contents of multiple files:
 - It uses the standard C library functions `fopen`, `fgets`, and `fclose` for file operations.
 - In case a file cannot be opened, it prints an error message and exits with a non-zero status code, indicating failure.
 
-## Notes
+## Screenshot
 
-- The buffer size of `1024` bytes is chosen arbitrarily and may not be optimal for all files or systems. Adjustments might be necessary for handling very large lines or optimizing performance.
-- The program does not support reading from standard input (stdin) if no files are provided, differing from the traditional Unix `cat` command in this aspect.
+![cat test picture](/screenshots/project2_cat.png)
 
 # my-grep.c
 
@@ -207,6 +210,10 @@ echo -e "hello\nworld" | ./my-grep hello
 - `0`: Program executed successfully.
 - `1`: Program encountered an error, such as missing arguments or unable to open a file.
 
+## Screenshot
+
+![grep test picture](/screenshots/project2_grep.png)
+
 # my-zip Documentation
 
 ## Overview
@@ -259,6 +266,10 @@ my-unzip input.z > output.txt
 - If no files are provided, `my-unzip` prints a usage message and exits with a status code of 1.
 - If a file cannot be opened, an error message is printed, and `my-unzip` exits with a status code of 1.
 
+## Screenshot
+
+![zip test with aabb file](/screenshots/project2_zipunzip.png)
+
 ---
 
 # Project 4: Modified XV6 Kernel with New Syscall `getreadcount`
@@ -293,7 +304,7 @@ The purpose of adding the `getreadcount` system call is to monitor the usage of 
 
 ## Screenshot
 
-Project4_Testreadcount.png
+![test program of new syscall](/screenshots/Project4_Testreadcount.png)
 
 This screenshot showcases the output of the `testreadcount` program, demonstrating the functionality of the new `getreadcount` syscall.
 
