@@ -34,7 +34,7 @@ The program includes the following error handling:
 
 All error messages are printed to `stderr` rather than `stdout`.
 
-## Code Structure
+## Functionality
 
 The program begins by checking the command-line arguments and opening the input file. It then reads lines from the input file into a dynamic array, resizing the array as needed.
 
@@ -72,25 +72,13 @@ my-cat [file ...]
 
 ## Functionality
 
-The main functionalities of the `my-cat` program include:
+`my-cat` checks if any files are named in the command line. If not, it simply ends without doing anything.
 
-- **No Files Specified**: If invoked without any file arguments, the program exits immediately with a return code of `0`, performing no actions.
-- **Reading and Displaying File Contents**: For each file specified in the command line arguments, the program attempts to open the file and read its content. The content is then printed to the standard output (`stdout`).
-- **Error Handling**: If a file cannot be opened, an error message `my-cat: cannot open file` is printed to the standard output, and the program exits with a return code of `1`.
+When files are listed, it opens each one to read. If a file can’t be opened, `my-cat` tells you it can't open the file and stops.
 
-## Examples
+It reads each file line by line and displays the text on the screen.
 
-To display the content of a single file:
-
-```bash
-./my-cat file1.txt
-```
-
-To concatenate and display the contents of multiple files:
-
-```bash
-./my-cat file1.txt file2.txt file3.txt
-```
+After showing a file’s contents, `my-cat` closes the file before moving to the next one.
 
 ## Error Messages
 
@@ -101,10 +89,10 @@ To concatenate and display the contents of multiple files:
 - `0`: Program executed successfully, all specified files were opened, and their contents displayed.
 - `1`: Program encountered an error, such as failure to open a specified file.
 
-## Implementation Details
+## Implementation
 
 - The program iterates over each argument provided to it, treating each as a filename to be opened and read.
-- For each file, it reads and prints the content using a buffer of fixed size (`1024` bytes). This size is a compromise between memory usage and performance but might not be optimal for all situations.
+- For each file, it reads and prints the content using a buffer of fixed size (`1024` bytes). This size is a compromise between memory usage and performance.
 - It uses the standard C library functions `fopen`, `fgets`, and `fclose` for file operations.
 - In case a file cannot be opened, it prints an error message and exits with a non-zero status code, indicating failure.
 
@@ -129,36 +117,13 @@ my-grep searchterm [file ...]
 
 ## Functionality
 
-The program consists of two main parts: the `grep` function and the `main` function.
+The `my-grep` program starts by checking for a search term and optional file names in the command line. If no search term is given, it asks for one and exits.
 
-### grep Function
+When given a search term and files, it looks through each file, line by line, for the term. If it finds the term, it prints that line.
 
-```c
-void grep(FILE *f, char *searchterm);
-```
+If it can’t open a file, it lets you know and stops.
 
-- **Purpose**: Searches a single file (or stdin) for lines containing the specified search term and prints those lines.
-- **Parameters**:
-  - `FILE *f`: A file pointer to the file being searched. Can also be stdin.
-  - `char *searchterm`: The string to search for in the file's content.
-- **Implementation Details**:
-  - Reads the file line by line.
-  - Uses `strstr` to search for the `searchterm` in each line.
-  - If `searchterm` is found, the line is printed to stdout.
-
-### Main Function
-
-The `main` function processes command-line arguments, handles file opening and closing, and calls the `grep` function accordingly.
-
-- **Command-Line Arguments**:
-  - The first argument after the program name is considered the `searchterm`.
-  - Any subsequent arguments are treated as filenames to be searched.
-- **Behavior**:
-  - If no arguments are provided, it prints usage information and exits.
-  - If only `searchterm` is provided (i.e., `argc == 2`), it reads from stdin.
-  - If one or more filenames are provided, it opens and searches each file for the `searchterm`.
-- **Error Handling**:
-  - If a file cannot be opened, it prints an error message and exits.
+The program works with standard input if no files are provided. After searching, it cleans up by freeing any used memory.
 
 ## Error Messages
 
@@ -242,7 +207,7 @@ This project introduces a modified XV6 kernel that implements a new syscall, `ge
 
 The modified kernel can be explored and tested within the `kernel` folder inside Project 4.
 
-## Implementation Summary
+## Implementation
 
 ### Adding `getreadcount` System Call to XV6
 
@@ -269,5 +234,5 @@ This screenshot showcases the output of the `testreadcount` program, demonstrati
 #### disclaimers and sources
 
 All programs have been tested to compile and work with -Wall -Werror in gcc.
-Generative AI was used to generate markdown and improve parts of the documentation, and to refine and improve code readability and structure.
+Generative AI was used to help create and improve the documentation, and to refine and improve code readability and structure.
 AI was used as a teaching tool and some information may be based on AI generated content.
