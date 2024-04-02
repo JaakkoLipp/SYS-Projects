@@ -12,7 +12,6 @@ int main(int argc, char *argv[]) {
   for (int i = 1; i < argc; i++) {
     // Reading
     FILE *fp = fopen(argv[i], "r");
-
     if (fp == NULL) {
       printf("my-cat: cannot open file\n");
       return 1;
@@ -23,10 +22,8 @@ int main(int argc, char *argv[]) {
     while (fgets(buffer, sizeof(buffer), fp) != NULL) {
       printf("%s", buffer);
     }
-
     // Close file
     fclose(fp);
   }
-  
   return 0;
 }

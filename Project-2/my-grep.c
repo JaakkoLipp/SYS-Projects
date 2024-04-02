@@ -14,7 +14,6 @@ void grep(FILE *f, char *searchterm) {
       printf("%s", line);
     }
   }
-
   free(line);
 }
 
@@ -23,7 +22,6 @@ int main(int argc, char *argv[]) {
     printf("my-grep: searchterm [file ...]\n");
     exit(1);
   }
-
   if (argc == 2) {
     grep(stdin, argv[1]);
   
@@ -35,12 +33,10 @@ int main(int argc, char *argv[]) {
         printf("my-grep: cannot open file\n");
         exit(1);
       }
-
       // Call search function
       grep(f, argv[1]);
       fclose(f);
     }
   }
-
   return 0;
 }
