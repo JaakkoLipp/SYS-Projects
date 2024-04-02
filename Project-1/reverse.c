@@ -6,28 +6,27 @@
 
 int main(int argc, char *argv[])
 {
-  // Check if filename is provided
-  if (argc < 2)
+  // check if args are valid
+  switch (argc)
   {
-    fprintf(stderr, "No filename provided\n");
-    return 1;
+    case 1:
+      fprintf(stderr, "No filename provided\n");
+      return 1;
+    case 2:
+      break;
+    case 3:
+      if (strcmp(argv[1], argv[2]) == 0)
+      {
+        fprintf(stderr, "Input and output file must differ\n");
+        return 1;
+      }
+      break;
+    default:
+      fprintf(stderr, "Usage: reverse <input> <output>\n");
+      return 1;
   }
 
-  // Check if too many arguments are passed
-  if (argc > 3)
-  {
-    fprintf(stderr, "Usage: reverse <input> <output>\n");
-    return 1;
-  }
-
-  // Check if input and output file are the same
-  if (argc == 3 && strcmp(argv[1], argv[2]) == 0)
-  {
-    fprintf(stderr, "Input and output file must differ\n");
-    return 1;
-  }
-
-  // Open the file for reading
+  // open the file for reading
   FILE *fileRead = fopen(argv[1], "r");
   if (fileRead == NULL)
   {
@@ -55,11 +54,11 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  // Read the file character by character
+  // read file char at a time
   int c;
   while ((c = fgetc(fileRead)) != EOF)
   {
-    // Check if line buffer is full, reallocate if necessary
+    // check if line buffer is full, reallocate if necessary
     if (charCount == bufferSize - 1)
     {
       bufferSize *= 2;
@@ -71,12 +70,12 @@ int main(int argc, char *argv[])
       }
     }
 
-    // Check if end of line OR file is reached
+    // check EOF or line
     if (c == '\n' || c == EOF)
     {
       line[charCount] = '\0';
 
-      // Check if lines array is full, reallocate if necessary
+      // check if lines array is full, reallocate if necessary
       if (lineCount == lineSize - 1)
       {
         lineSize *= 2;
@@ -88,11 +87,11 @@ int main(int argc, char *argv[])
         }
       }
 
-      // Store the line in the lines array
+      // store line in array
       lines[lineCount] = line;
       lineCount++;
 
-      // Reset line buffer
+      // reset line buffer
       bufferSize = INITIAL_SIZE;
       line = malloc(bufferSize);
       if (line == NULL)
@@ -104,7 +103,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-      // Add character to the line buffer
+      // add char to buffer
       line[charCount] = c;
       charCount++;
     }
@@ -112,7 +111,7 @@ int main(int argc, char *argv[])
 
   fclose(fileRead);
 
-  // Check if output filename is provided
+  // check if output filename is provided
   FILE *fileWrite = NULL;
   if (argc == 3)
   {
@@ -124,17 +123,17 @@ int main(int argc, char *argv[])
     }
   }
 
-  // Print lines in reverse order
+  // print lines in reverse order
   for (int i = lineCount - 1; i >= 0; i--)
   {
     if (fileWrite != NULL)
     {
-      // Write to the output file
+      // write to the output file
       fprintf(fileWrite, "%s\n", lines[i]);
     }
     else
     {
-      // Write to stdout
+      // write to stdout
       printf("%s\n", lines[i]);
     }
     free(lines[i]);
