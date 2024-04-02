@@ -2,9 +2,7 @@
 
 Sourcecode available at: [https://github.com/JaakkoLipp/SYS-Projects](https://github.com/JaakkoLipp/SYS-Projects)
 
-screenshots of programs functionality in screenshots/ folder
-
-Ideally the documentation would be in seperate files
+screenshots of programs functionality in screenshots/ folder.
 
 # Project 1: Warmup to C and Unix programming
 
@@ -62,7 +60,7 @@ When the program has finished writing the lines to the output file, it frees the
 
 ## Overview
 
-The `my-cat` program is a simple implementation similar to the Unix `cat` utility. It concatenates and displays the content of one or more files to the standard output. If no files are specified, the program exits without doing anything, effectively performing a no-operation (no-op).
+The `my-cat` program concatenates and displays the content of one or more files to the standard output. If no files are specified, the program exits without doing anything.
 
 ## Usage
 
@@ -71,16 +69,6 @@ my-cat [file ...]
 ```
 
 - `[file ...]`: Optional. One or more files to concatenate and display. If no files are provided, `my-cat` performs a no-op.
-
-## Compilation
-
-To compile the `my-cat` program, use the following gcc command:
-
-```bash
-gcc -o my-cat my-cat.c
-```
-
-This command compiles the source code into an executable named `my-cat`.
 
 ## Functionality
 
@@ -128,7 +116,7 @@ To concatenate and display the contents of multiple files:
 
 ## Overview
 
-The `my-grep` program is a simplified version of the Unix `grep` utility. It searches for lines containing a specified search term in one or more files and prints those lines to the standard output. If no file is provided, `my-grep` reads from standard input (stdin), allowing it to be used in a pipeline of commands.
+The `my-grep` program searches for lines containing a specified search term in one or more files and prints those lines to the standard output. If no file is provided, `my-grep` reads from standard input (stdin).
 
 ## Usage
 
@@ -138,14 +126,6 @@ my-grep searchterm [file ...]
 
 - `searchterm`: The string to search for within each file or stdin.
 - `[file ...]`: Optional. One or more files to search. If no files are provided, `my-grep` searches stdin.
-
-## Compilation
-
-To compile the `my-grep` program, use the following command:
-
-```bash
-gcc -o my-grep my-grep.c
-```
 
 ## Functionality
 
@@ -180,26 +160,6 @@ The `main` function processes command-line arguments, handles file opening and c
 - **Error Handling**:
   - If a file cannot be opened, it prints an error message and exits.
 
-## Examples
-
-Search for the term "error" in a file named "log.txt":
-
-```bash
-./my-grep error log.txt
-```
-
-Search for the term "foo" across multiple files:
-
-```bash
-./my-grep foo file1.txt file2.txt
-```
-
-Use in a pipeline to search for "hello" in the output of another command:
-
-```bash
-echo -e "hello\nworld" | ./my-grep hello
-```
-
 ## Error Messages
 
 - If the program is invoked without a search term, it will display: `my-grep: searchterm [file ...]` and exit.
@@ -218,7 +178,7 @@ echo -e "hello\nworld" | ./my-grep hello
 
 ## Overview
 
-`my-zip` is a file compression tool that utilizes Run-Length Encoding (RLE) for compressing text files. It reads one or more text files as input and outputs a compressed version to the standard output (stdout), which is typically redirected to a file.
+`my-zip` is a file compression tool that utilizes Run-Length Encoding (RLE) for compressing text files. It reads one or more text files as input and outputs a compressed version to the standard output (stdout), which should be redirected to a file.
 
 ## Functionality
 
@@ -282,10 +242,6 @@ This project introduces a modified XV6 kernel that implements a new syscall, `ge
 
 The modified kernel can be explored and tested within the `kernel` folder inside Project 4.
 
-## Purpose
-
-The purpose of adding the `getreadcount` system call is to monitor the usage of the `read()` system call, providing insights into read operations performed by user processes.
-
 ## Implementation Summary
 
 ### Adding `getreadcount` System Call to XV6
@@ -313,5 +269,5 @@ This screenshot showcases the output of the `testreadcount` program, demonstrati
 #### disclaimers and sources
 
 All programs have been tested to compile and work with -Wall -Werror in gcc.
-Generative AI was used to generate and improve parts of the documentation, and to refine and improve code readability and structure.
+Generative AI was used to generate markdown and improve parts of the documentation, and to refine and improve code readability and structure.
 AI was used as a teaching tool and some information may be based on AI generated content.
