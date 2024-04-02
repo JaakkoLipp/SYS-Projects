@@ -1,7 +1,5 @@
 # SYS-Projects 1, 2 & 4
 
----
-
 Code available at: [https://github.com/JaakkoLipp/SYS-Projects](https://github.com/JaakkoLipp/SYS-Projects)
 
 Screenshots of programs functionality in screenshots folder.
